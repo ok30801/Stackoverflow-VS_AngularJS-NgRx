@@ -1,0 +1,56 @@
+<form class="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form__section-left"></div>
+  <div class="form__section-right">
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <mat-icon matSuffix>email</mat-icon>
+      <input matInput formControlName="email" required>
+      <mat-error
+        *ngIf="form.hasError('required', 'email')"
+      >Please enter your email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Password</mat-label>
+      <mat-icon
+        matSuffix
+        class="form__icon-password"
+        (click)="toggleShowPassword()"
+      >{{!showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <input
+        matInput
+        formControlName="password"
+        [type]="!showPassword ? 'password' : 'text'"
+        name="pass"
+        required
+      >
+      <mat-error
+        *ngIf="form.hasError('required', 'password')"
+      >Please enter your password</mat-error>
+    </mat-form-field>
+
+    <div class="form__section">
+      <mat-checkbox
+        class="form__checkbox"
+        (click)="handleChecked()"
+      >Remember me</mat-checkbox>
+      <a class="form__forgot-link" routerLink="/recovery-password">Forgot password?</a>
+    </div>
+
+    <mat-error *ngIf="formError" >
+      <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
+      </p>
+    </mat-error>
+
+    <button
+      mat-stroked-button
+      color="primary"
+      type="submit"
+      [class.active]="form.valid && !formError"
+      [disabled]="form.invalid || formError"
+    >Sign in</button>
+
+  </div>
+</form>

@@ -1,0 +1,25 @@
+<div class="header__wrapper">
+  <div class="header__container">
+    <div routerLink="/" class="header__logo">
+      <img src="../../assets/logo_2.png" alt="logo">
+    </div>
+    <div class="header__menu" *ngIf="!auth; else elseBlock">
+      <div
+        routerLinkActive="active"
+        class="header__menu-link active"
+        routerLink="/auth"
+      >Sign in</div>
+      <div
+        routerLinkActive="active"
+        class="header__menu-link"
+        routerLink="/registration"
+      >Sign Up</div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="header__menu-link">
+        <mat-icon aria-hidden="false" aria-label="Logout">logout</mat-icon>
+      </div>
+    </ng-template>
+  </div>
+</div>
+-

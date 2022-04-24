@@ -1,0 +1,30 @@
+<div class="header">
+  <div class="container">
+    <div class="header__row">
+      <div routerLink="/" class="header__logo">
+        <img src="../../assets/logo_2.png" alt="logo">
+      </div>
+      <div class="header__menu">
+        <div
+          routerLinkActive="active"
+          class="header__menu-link active"
+          routerLink="/auth"
+        >Sign in</div>
+        <div
+          routerLinkActive="active"
+          class="header__menu-link"
+          routerLink="/registration"
+        >Sign Up</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+
+
