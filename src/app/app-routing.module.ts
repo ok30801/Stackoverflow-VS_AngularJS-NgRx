@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
-import { AuthPageComponent } from './pages/auth-page/auth-page.component';
-import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
-import { RecoveryPasswordPageComponent } from './pages/recovery-password-page/recovery-password-page.component';
-import { ResultPageComponent } from './pages/result-page/result-page.component';
+import { SearchPageComponent } from './components/search-page/search-page.component';
+import { AuthPageComponent } from './components/auth-page/auth-page.component';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { RecoveryPasswordPageComponent } from './components/recovery-password-page/recovery-password-page.component';
+import { ResultPageComponent } from './components/result-page/result-page.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import {AuthLayoutComponent} from './shared/auth-layout/auth-layout.component';
 
