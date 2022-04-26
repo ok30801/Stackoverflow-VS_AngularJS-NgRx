@@ -1,13 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { Users } from './interfaces';
+import { Users } from '../interfaces/interfaces';
+import { environment } from '../../../environments/environment';
 
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class UsersService {
   constructor(private http: HttpClient) { }
+
 
   fetchUsers(): Observable<Users[]> {
     return this.http.get<Users[]>(`${environment.usersDbUrl}`)

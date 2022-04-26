@@ -33,13 +33,13 @@ export const myAnimation = trigger("routeAnimation", [
     query(
       ":leave",
       [style({ opacity: 1 }), animate("0.2s", style({ opacity: 0 }))],
-      // { optional: true }
+      { optional: true }
     ),
 
     query(
       ":enter",
       [style({ opacity: 0 }), animate("0.2s", style({ opacity: 1 }))],
-      // { optional: true }
+      { optional: true }
     ),
   ]),
 ]);

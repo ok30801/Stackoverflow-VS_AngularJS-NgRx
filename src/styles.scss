@@ -73,10 +73,36 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 .mat-form-field {
   margin-bottom: 10px;
+  width: 100%;
 }
-.mat-form-field-flex {
-  height: 40px;
+.mat-form-field-suffix.ng-tns-c35-2.ng-star-inserted > .search__btn {
+  height: 52px;
+  border-radius: 0 3px 3px 0;
+  z-index: -1;
+  margin-right: -11px;
+  border: 2px solid;
+  border-color: var(--secondary-color);
+  &:hover {
+    cursor: pointer;
+  }
 }
+.mat-form-field-flex > div > search__btn {
+  padding: 14px 8px 14px 14px;
+  background: var(--secondary-color);
+  color: #fff;
+  transition: all .3s;
+  &:hover {
+    background: #fff;
+    border: 2px solid;
+    border-color: var(--secondary-color);
+    color: var(--primary-color)
+  }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--secondary-color);
+}
+
 
 /*-------------- Custom style buttons ----------------*/
 

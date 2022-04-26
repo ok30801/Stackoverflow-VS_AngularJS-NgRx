@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { myAnimation, slider } from '../../route-animations/route-animations';
+import { slider, myAnimation } from '../services/route-animations';
 
 @Component({
   selector: 'app-main-layout',

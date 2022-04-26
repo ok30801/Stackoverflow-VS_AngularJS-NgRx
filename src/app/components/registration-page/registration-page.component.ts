@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert } from '../../shared/interfaces'
-import { UsersService } from '../../shared/users.service'
+import { Alert } from '../../shared/interfaces/interfaces'
+import { UsersService } from '../../shared/services/users.service'
 import { Router } from '@angular/router';
 
 const ALERTS: Alert[] = [

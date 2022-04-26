@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert } from '../../shared/interfaces'
-import { UsersService } from '../../shared/users.service'
+import { Alert } from '../../shared/interfaces/interfaces'
+import { UsersService } from '../../shared/services/users.service'
 import { Router } from '@angular/router';
 
 const ALERTS: Alert[] = [
@@ -13,9 +13,10 @@ const ALERTS: Alert[] = [
   templateUrl: './auth-page.component.html',
   styleUrls: ['./auth-page.component.scss']
 })
+
 export class AuthPageComponent implements OnInit {
 
-  public form !: FormGroup
+  form !: FormGroup
   alerts: Alert[] = []
   formError = false
   showPassword = false

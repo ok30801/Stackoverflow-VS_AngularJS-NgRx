@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert } from '../../shared/interfaces'
-import { UsersService } from '../../shared/users.service'
+import { Alert } from '../../shared/interfaces/interfaces'
+import { UsersService } from '../../shared/services/users.service'
 import {Router, RouterOutlet} from '@angular/router';
 
 const ALERTS: Alert[] = [
@@ -20,7 +20,6 @@ export class RecoveryPasswordPageComponent implements OnInit {
   alerts: Alert[] = []
   formError = false
   successfullySent = false
-  test = 'start'
 
   constructor(private usersService: UsersService, private router: Router) {}
 
