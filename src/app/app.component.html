@@ -1,5 +1,7 @@
-<div class="wrapper">
-<!--  <div class="container">-->
-    <router-outlet></router-outlet>
-<!--  </div>-->
+<!--<div class="wrapper">-->
+<!--  <router-outlet></router-outlet>-->
+<!--</div>-->
+
+<div class="wrapper" [@routeAnimation]="getDepth(myOutlet)">
+  <router-outlet #myOutlet="outlet"></router-outlet>
 </div>

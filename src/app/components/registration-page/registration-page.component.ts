@@ -15,9 +15,7 @@ const ALERTS: Alert[] = [
 })
 export class RegistrationPageComponent implements OnInit {
 
-  // @ts-ignore
-  form: FormGroup
-  checked = false
+  public form !: FormGroup
   alerts: Alert[] = []
   formError = false
   showPassword = false
@@ -45,11 +43,7 @@ export class RegistrationPageComponent implements OnInit {
     this.reset()
     if (this.form.invalid) return
 
-    if (this.checked) {
-      localStorage.setItem('userData', JSON.stringify(this.form.value))
-    }
     this.fetchUsers()
-    console.log('this.form', this.form.value)
   }
 
   fetchUsers() {
@@ -63,10 +57,6 @@ export class RegistrationPageComponent implements OnInit {
           }
         })
       })
-  }
-
-  handleChecked() {
-    this.checked = !this.checked
   }
 
   toggleShowPassword() {

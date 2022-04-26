@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid;
+  border-color: var(--border-color);
+  //margin-bottom: 50px;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  &__logo {
+    margin: 10px 0;
+    & img {
+      margin-right: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &__menu {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  &__menu-link {
+    font-weight: 500;
+    font-size: 14px;
+    transition: all .3s;
+    padding: 10px;
+    &:hover {
+      cursor: pointer;
+      color: var(--hover-link);
+    }
+    &.active {
+      border: 1px solid;
+      border-radius: 5px;
+      background: var(--background-active);
+    }
+  }
+}
+

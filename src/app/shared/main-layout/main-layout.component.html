@@ -1,3 +1,20 @@
-<div>
-  <router-outlet></router-outlet>
+<div class="header">
+  <div class="container">
+    <div class="header__row">
+      <div routerLink="/" class="header__logo">
+        <img src="../../assets/logo.png" alt="logo">
+      </div>
+      <div class="header__menu">
+        <div
+          routerLinkActive="active"
+          class="header__menu-link"
+          routerLink="/registration"
+        >Logout</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" [@routeAnimation]="getDepth(myOutlet)">
+  <router-outlet #myOutlet="outlet"></router-outlet>
 </div>

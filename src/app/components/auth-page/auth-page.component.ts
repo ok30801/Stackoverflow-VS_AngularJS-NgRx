@@ -15,9 +15,7 @@ const ALERTS: Alert[] = [
 })
 export class AuthPageComponent implements OnInit {
 
-  // @ts-ignore
-  form: FormGroup
-  checked = false
+  public form !: FormGroup
   alerts: Alert[] = []
   formError = false
   showPassword = false
@@ -40,28 +38,11 @@ export class AuthPageComponent implements OnInit {
     })
   }
 
-  // getErrorMessage(control: string) {
-  //
-  //   if (control === 'email' && this.email.hasError('required')) {
-  //     return 'Укажите Ваш Email';
-  //   }
-  //   if (control === 'password' && this.password.hasError('required')) {
-  //     return 'Введите пароль';
-  //   }
-  //   return this.email.status === 'INVALID' || this.password.status === 'INVALID'
-  //     ? 'Пожалуйста, введите корректные данные'
-  //     : '';
-  // }
-
   submit() {
     this.reset()
     if (this.form.invalid) return
-
-    if (this.checked) {
-      localStorage.setItem('userData', JSON.stringify(this.form.value))
-    }
+    localStorage.setItem('userData', JSON.stringify(this.form.value))
     this.fetchUsers()
-    console.log('this.form', this.form.value)
   }
 
   fetchUsers() {
@@ -77,12 +58,7 @@ export class AuthPageComponent implements OnInit {
       })
   }
 
-  handleChecked() {
-    this.checked = !this.checked
-  }
-
   toggleShowPassword() {
     this.showPassword = !this.showPassword
   }
-
 }

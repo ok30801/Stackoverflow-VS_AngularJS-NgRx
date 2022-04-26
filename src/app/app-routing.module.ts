@@ -6,20 +6,20 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { RecoveryPasswordPageComponent } from './components/recovery-password-page/recovery-password-page.component';
 import { ResultPageComponent } from './components/result-page/result-page.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
-import {AuthLayoutComponent} from './shared/auth-layout/auth-layout.component';
+import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 
 const routes: Routes = [
 
   { path: '', component: AuthLayoutComponent, children: [
-      { path: '', redirectTo: '/auth', pathMatch: 'full' },
-      { path: 'auth', component: AuthPageComponent },
-      { path: 'recovery-password', component: RecoveryPasswordPageComponent },
-      { path: 'registration', component: RegistrationPageComponent },
+      { path: '', redirectTo: 'auth', pathMatch: 'full' },
+      { path: 'auth', component: AuthPageComponent, data: {depth: 1} },
+      { path: 'recovery-password', component: RecoveryPasswordPageComponent, data: {depth: 2} },
+      { path: 'registration', component: RegistrationPageComponent, data: {depth: 3} },
     ]
   },
   { path: '', component: MainLayoutComponent, children: [
-      { path: 'search', component: SearchPageComponent },
-      { path: 'result', component: ResultPageComponent },
+      { path: 'search', component: SearchPageComponent, data: {depth: 1} },
+      { path: 'result', component: ResultPageComponent, data: {depth: 2} },
     ]
   },
 ];
@@ -28,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
  })
-export class AppRoutingModule {   }
+export class AppRoutingModule { }

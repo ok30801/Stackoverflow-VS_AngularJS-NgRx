@@ -29,10 +29,10 @@ const maskConfig: Partial<IConfig> = {
     AuthPageComponent,
     SearchPageComponent,
     ResultPageComponent,
-    RegistrationPageComponent,
-    RecoveryPasswordPageComponent,
     MainLayoutComponent,
     AuthLayoutComponent,
+    RegistrationPageComponent,
+    RecoveryPasswordPageComponent,
   ],
   imports: [
     NgbModule,
