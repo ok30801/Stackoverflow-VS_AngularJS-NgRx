@@ -19,7 +19,7 @@ const routes: Routes = [
   },
   { path: '', component: MainLayoutComponent, children: [
       { path: 'search', component: SearchPageComponent, data: {depth: 1} },
-      { path: 'result', component: ResultPageComponent, data: {depth: 2} },
+      { path: 'result/query/:searchQuery', component: ResultPageComponent, data: {depth: 2} },
     ]
   },
 ];

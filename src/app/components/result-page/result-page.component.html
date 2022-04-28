@@ -1,14 +1,23 @@
-<form class="form">
-  <div class="form__section-left"></div>
-  <div class="form__section-right">
-
-    <div class="form__title">Result</div>
-
-    <div class="form__section">
-      <a class="form__forgot-link" routerLink="/search">Search</a>
-    </div>
-
-  </div>
+<form class="search" [formGroup]="form" (ngSubmit)="handleSearch()">
+  <mat-form-field appearance="outline" class="search__input">
+    <input autoFocus matInput formControlName="searchPhrase" required>
+    <mat-error
+      *ngIf="form.hasError('required', 'searchPhrase')"
+    >Please enter your password</mat-error>
+  </mat-form-field>
+  <button
+    mat-stroked-button
+    color="primary"
+    type="submit"
+    class="search__btn"
+    [class.active]="form.valid && !formError"
+    [disabled]="form.invalid || formError"
+  >Search <mat-icon>search</mat-icon></button>
 </form>
+<div>
+  <div *ngFor="let autor of searchData.items" >
+    {{autor.owner.display_name}}
+  </div>
+</div>
 
 

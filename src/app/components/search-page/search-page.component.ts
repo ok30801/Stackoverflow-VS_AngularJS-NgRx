@@ -1,9 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { StackOverflowData } from "../../shared/services/stack-overflow-data.service";
-import { Subscription } from 'rxjs';
+import { StackOverflowDataService } from "../../shared/services/stack-overflow-data.service";
+import { HttpClient } from '@angular/common/http';
+import { addStackOverflowData } from '../../reducers/stackOverflowData';
+import { Store } from '@ngrx/store';
+
 
 @Component({
   selector: 'app-search-page',
@@ -16,7 +19,14 @@ export class SearchPageComponent implements OnInit {
   form!: FormGroup
   formError = false
 
-  constructor( private router: Router, private data: StackOverflowData ) { }
+  resultObject: any
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private data: StackOverflowDataService,
+    private store: Store,
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -24,18 +34,24 @@ export class SearchPageComponent implements OnInit {
     })
   }
   handleSearch() {
+
     if (this.form.invalid) {
       this.formError = true
-    } else {
-      this.fetchStackOverflowData()
-      // this.router.navigate(['/result'])
-    }
+    } /*else {
+      this.router.navigateByUrl(`result/query/${this.form.value.searchPhrase}`)
+        .then(() => this.data.getStackOverflowData(this.form.value.searchPhrase))
+    }*/
+    this.fetchStackOverflowData()
   }
 
   fetchStackOverflowData() {
-    this.data.fetchStackOverflowData()
-      .subscribe(data => {
-        console.log('data', data)
+    this.data.fetchStackOverflowData(this.form.value.searchPhrase)
+      .subscribe(item => {
+        this.resultObject = item
+        this.store.dispatch(addStackOverflowData({payload: this.resultObject.items}))
       })
+    // this.store.dispatch(addStackOverflowData({payload: this.test as DataTest[]}))
+    // console.log('this.resultObject', this.resultObject)
+
   }
 }

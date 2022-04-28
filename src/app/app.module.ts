@@ -18,6 +18,12 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import { RecoveryPasswordPageComponent } from './components/recovery-password-page/recovery-password-page.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -45,7 +51,12 @@ const maskConfig: Partial<IConfig> = {
     ReactiveFormsModule,
     MaterialExampleModule,
     BrowserAnimationsModule,
-    NgxMaskModule.forRoot(maskConfig)
+    NgxMaskModule.forRoot(maskConfig),
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

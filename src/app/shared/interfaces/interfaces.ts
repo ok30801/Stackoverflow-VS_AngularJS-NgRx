@@ -8,7 +8,3 @@ export interface Users {
   password: string;
 }
 
-export interface Data {
-  email: string;
-  password: string;
-}
