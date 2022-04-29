@@ -15,7 +15,7 @@
   >Search <mat-icon>search</mat-icon></button>
 </form>
 <div>
-  <div *ngFor="let autor of searchData.items" >
+  <div *ngFor="let autor of searchData$ | async" >
     {{autor.owner.display_name}}
   </div>
 </div>

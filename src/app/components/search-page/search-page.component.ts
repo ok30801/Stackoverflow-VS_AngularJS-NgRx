@@ -18,7 +18,6 @@ export class SearchPageComponent implements OnInit {
   focused!: true
   form!: FormGroup
   formError = false
-
   resultObject: any
 
   constructor(
@@ -34,13 +33,11 @@ export class SearchPageComponent implements OnInit {
     })
   }
   handleSearch() {
-
     if (this.form.invalid) {
       this.formError = true
-    } /*else {
+    } else {
       this.router.navigateByUrl(`result/query/${this.form.value.searchPhrase}`)
-        .then(() => this.data.getStackOverflowData(this.form.value.searchPhrase))
-    }*/
+    }
     this.fetchStackOverflowData()
   }
 
@@ -50,8 +47,5 @@ export class SearchPageComponent implements OnInit {
         this.resultObject = item
         this.store.dispatch(addStackOverflowData({payload: this.resultObject.items}))
       })
-    // this.store.dispatch(addStackOverflowData({payload: this.test as DataTest[]}))
-    // console.log('this.resultObject', this.resultObject)
-
   }
 }
