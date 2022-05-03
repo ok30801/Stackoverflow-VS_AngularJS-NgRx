@@ -39,7 +39,6 @@ html,body{
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
   color: var(--primary-color);
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -57,17 +56,14 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 /*----------------- Style Layouts -------------------*/
 .wrapper {
-  margin: 0 auto;
+  height: 100%;
 }
 .container {
-  max-width: 940px;
+  max-width: 1200px;
   padding: 0 30px;
   position: relative;
-  //overflow: hidden;
 }
-.container>* {
-  display:block;
-}
+
 
 /*-------------- Custom style fields ----------------*/
 
@@ -134,4 +130,22 @@ button.mat-button-disabled > span {
 }
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: var(--secondary-color);
+}
+.mat-dialog-actions {
+  //justify-content: end;
+}
+button.mat-focus-indicator.mat-button.mat-button-base {
+  border: 1px solid;
+  border-color: var(--secondary-color);
+  transition: all .3s;
+  &:hover {
+    background: var(--secondary-color);
+    color: #fff !important;
+    border: 1px solid;
+    border-color: var(--secondary-color);
+  }
+}
+.cdk-overlay-pane {
+  max-width: 800px !important;
+  width: 100%;
 }

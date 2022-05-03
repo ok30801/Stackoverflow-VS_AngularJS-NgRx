@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { StackOverflowDataService } from "../../shared/services/stack-overflow-data.service";
 import { HttpClient } from '@angular/common/http';
-import { addStackOverflowData } from '../../reducers/stackOverflowData';
+import { addStackOverflowData } from '../../reducers/api-data';
 import { Store } from '@ngrx/store';
 
 
@@ -38,11 +38,11 @@ export class SearchPageComponent implements OnInit {
     } else {
       this.router.navigateByUrl(`result/query/${this.form.value.searchPhrase}`)
     }
-    this.fetchStackOverflowData()
+    this.getStackOverflowData()
   }
 
-  fetchStackOverflowData() {
-    this.data.fetchStackOverflowData(this.form.value.searchPhrase)
+  getStackOverflowData() {
+    this.data.getStackOverflowData(this.form.value.searchPhrase)
       .subscribe(item => {
         this.resultObject = item
         this.store.dispatch(addStackOverflowData({payload: this.resultObject.items}))

@@ -1,6 +1,6 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { StackOverflowDataReducer, StackOverflowDataState } from './stackOverflowData';
+import { StackOverflowDataReducer, StackOverflowDataState } from './api-data';
 
 export interface State {
   data: StackOverflowDataState

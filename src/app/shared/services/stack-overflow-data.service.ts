@@ -8,19 +8,19 @@ export class StackOverflowDataService {
 
   constructor(private http: HttpClient) { }
 
-  // public searchQuery$ = new Subject();
-  public search$ = new Subject();
+  // public search$ = new Subject();
 
-  // searchUrl: any
-
-  fetchStackOverflowData(searchPhrase: string) {
+  getStackOverflowData(searchPhrase: string) {
     return this.http.get(`${environment.apiUrl}${searchPhrase}&site=${environment.site}`)
       .pipe(map(response => response))
   }
+  getAuthorData(id: number) {
+    return this.http.get(`${environment.apiAuthorUrl}${id}/questions?order=desc&sort=activity&site=${environment.site}`)
+      .pipe(map(response => response))
+  }
+  getTagData(tag: string) {
+    return this.http.get(`${environment.apiTagUrl}${tag}/faq?site=${environment.site}`)
+      .pipe(map(response => response))
+  }
 
-  // getStackOverflowData(searchPhrase: string) {
-  //   this.searchUrl = this.http.get(`${environment.apiUrl}${searchPhrase}&site=${environment.site}`)
-  //   this.searchQuery$.next(searchPhrase);
-  //   this.search$.next(this.searchUrl);
-  // }
 }

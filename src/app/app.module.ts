@@ -24,6 +24,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { DialogAuthorComponent } from './dialog/dialog-author/dialog-author.component';
+import { DialogTagComponent } from './dialog/dialog-tag/dialog-tag.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -39,6 +41,8 @@ const maskConfig: Partial<IConfig> = {
     AuthLayoutComponent,
     RegistrationPageComponent,
     RecoveryPasswordPageComponent,
+    DialogAuthorComponent,
+    DialogTagComponent,
   ],
   imports: [
     NgbModule,

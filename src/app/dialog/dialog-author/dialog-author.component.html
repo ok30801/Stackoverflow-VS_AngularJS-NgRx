@@ -1,0 +1,47 @@
+<div class="dialog" *ngIf="(authorData$ | async)?.length; else loader">
+  <mat-dialog-content class="mat-typography">
+    <h1 mat-dialog-title>Author: {{authorName}}</h1>
+    <div class="dialog__header-table">
+      <div class="dialog__column-theme">Theme</div>
+      <div class="dialog__column-answers">Answers</div>
+      <div class="dialog__column-tags">Tags</div>
+    </div>
+    <div class="dialog__table-body" *ngFor="let autor of authorData$ | async ">
+      <div class="dialog__theme">
+        <a
+          routerLink=""
+          (click)="handleClickTheme()"
+        >
+          {{autor.title}}
+        </a>
+      </div>
+      <div class="dialog__answers">
+        <a
+          routerLink=""
+          (click)="handleClickAnswers()"
+        >
+          {{autor.answer_count}}
+        </a>
+      </div>
+      <div class="dialog__tags">
+        <a
+          routerLink=""
+          *ngFor="let tag of autor.tags"
+          (click)="handleClickTag()"
+        >
+          {{tag}}
+        </a>
+      </div>
+
+    </div>
+  </mat-dialog-content>
+
+
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close (click)="close()">Close</button>
+  </div>
+</div>
+
+<ng-template #loader>...Loading</ng-template>
+
+

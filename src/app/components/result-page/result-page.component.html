@@ -14,10 +14,54 @@
     [disabled]="form.invalid || formError"
   >Search <mat-icon>search</mat-icon></button>
 </form>
-<div>
-  <div *ngFor="let autor of searchData$ | async" >
-    {{autor.owner.display_name}}
+
+<div  *ngIf="(searchData$ | async)?.length; else message">
+  <div class="search__header-table">
+    <div class="search__column-author">Author</div>
+    <div class="search__column-theme">Theme</div>
+    <div class="search__column-answers">Answers</div>
+    <div class="search__column-tags">Tags</div>
+  </div>
+  <div class="search__table-body" *ngFor="let autor of searchData$ | async ">
+    <div class="search__author">
+      <a
+        (click)="handleClickAuthor(autor.owner.user_id)"
+      >
+        {{autor.owner.display_name}}
+      </a>
+    </div>
+    <div class="search__theme">
+      <a
+        routerLink=""
+        (click)="handleClickTheme()"
+      >
+        {{autor.title}}
+      </a>
+    </div>
+    <div class="search__answers">
+      <a
+        routerLink=""
+        (click)="handleClickAnswers()"
+      >
+        {{autor.answer_count}}
+      </a>
+    </div>
+    <div class="search__tags">
+      <a
+        *ngFor="let tag of autor.tags"
+        (click)="handleClickTag(tag)"
+      >
+        {{tag}}
+      </a>
+    </div>
+
   </div>
 </div>
+<ng-template #message>
+  <div class="search__message">
+    Sorry, no information was found for this query. Please try again
+  </div>
+</ng-template>
+
 
 
