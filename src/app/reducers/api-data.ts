@@ -11,6 +11,14 @@ export const addAuthorData = createAction(
 export const addTagData = createAction(
   '[TAG_DATA] addTagData', props<{ tagData: any, tagName: string }>()
 )
+
+export const addAnswerData = createAction(
+      '[ANSWER_DATA] addAnswerData', props<{ answerData: any }>()
+)
+
+export const addQuestionData = createAction(
+  '[QUESTION_DATA] addQuestionData', props<{ questionData: any }>()
+)
 export const clearData = createAction(
   '[CLEAR_DATA] clearData'
 )
@@ -20,6 +28,8 @@ export interface StackOverflowDataState {
   authorData: any
   tagData: any
   tagName: string
+  questionData: any
+  answerData: any
 }
 
 export const initialState: any = []
@@ -39,6 +49,14 @@ export const StackOverflowDataReducer = createReducer(
     tagData: tagData,
     tagName: tagName
   })),
+  on(addQuestionData, (state, {questionData}) => ({
+    ...state,
+    questionData: questionData,
+  })),
+  on(addAnswerData, (state, {answerData}) => ({
+    ...state,
+    answerData: answerData,
+  })),
   on(clearData, state => ({
     ...state,
     authorData: [],
@@ -52,30 +70,38 @@ export const featureSelector = createFeatureSelector<StackOverflowDataState>('da
 export const StackOverflowDataSelector = createSelector(
   featureSelector,
   state => {
-    console.log('state', state)
     return state.searchData
   }
 )
 export const AuthorDataSelector = createSelector(
   featureSelector,
   state => {
-    console.log('state', state)
     return state.authorData
   }
 )
 export const TagDataSelector = createSelector(
   featureSelector,
   state => {
-    console.log('state=>tag', state)
     return state.tagData
   }
 )
 export const TagNameSelector = createSelector(
   featureSelector,
   state => {
-    console.log('state=>tag', state)
     return state.tagName
   }
 )
+export const QuestionDataSelector = createSelector(
+  featureSelector,
+  state => {
+    return state.questionData
+  }
+)
 
+export const AnswerDataSelector = createSelector(
+  featureSelector,
+  state => {
+    return state.answerData
+  }
+)
 

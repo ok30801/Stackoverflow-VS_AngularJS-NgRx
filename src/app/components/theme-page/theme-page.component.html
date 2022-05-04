@@ -1,0 +1,38 @@
+<div class="question" *ngFor="let question of questionData$ | async">
+  <div class="question__block">
+    <h1 class="question__title">{{question.title}}</h1>
+    <div class="question__body" [innerHTML]="question.body"></div>
+    <div class="question__section-tags">
+      <div class="question__author-block">
+        <img src="{{question.owner.profile_image}}" alt="avatar">
+        <div class="question__author" (click)="handleClickAuthor(question.owner.user_id)">
+          {{question.owner.display_name}}
+        </div>
+      </div>
+      <div class="question__tags">
+        <a *ngFor="let tag of question.tags" (click)="handleClickTag(tag)">{{tag}}</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>Answers ({{question.answer_count}})</h2>
+</div>
+
+<div class="question__block-answer" *ngFor="let answer of answerData$ | async; let i = index">
+
+  <div class="question__author-answer">
+    <div question__number>{{i + 1}}.</div>
+    <div class="question__author-block">
+      <img src="{{answer.owner.profile_image}}" alt="avatar">
+      <div
+        class="question__author"
+        (click)="handleClickAuthor(answer.owner.user_id)"
+      >
+        {{answer.owner.display_name}}
+      </div>
+    </div>
+  </div>
+
+  <div class="question__body" [innerHTML]="answer.body"></div>
+</div>
+

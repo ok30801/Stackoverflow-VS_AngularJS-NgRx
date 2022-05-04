@@ -8,15 +8,16 @@
     </div>
     <div class="dialog__table-body" *ngFor="let tag of tagData$ | async ">
       <div class="dialog__author">
-        <a>{{tag.owner.display_name}}</a>
+        <a (click)="handleClickAuthor(tag.owner.user_id)">
+          {{tag.owner.display_name}}</a>
       </div>
       <div class="dialog__theme">
-        <a (click)="handleClickTheme()">
+        <a (click)="handleClickTheme(tag.question_id)">
           {{tag.title}}
         </a>
       </div>
       <div class="dialog__answers">
-        <a (click)="handleClickAnswers()">
+        <a (click)="handleClickTheme(tag.question_id)">
           {{tag.answer_count}}
         </a>
       </div>

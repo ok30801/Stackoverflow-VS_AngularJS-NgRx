@@ -31,26 +31,17 @@
       </a>
     </div>
     <div class="search__theme">
-      <a
-        routerLink=""
-        (click)="handleClickTheme()"
-      >
+      <a (click)="handleClickTheme(autor.question_id)">
         {{autor.title}}
       </a>
     </div>
     <div class="search__answers">
-      <a
-        routerLink=""
-        (click)="handleClickAnswers()"
-      >
+      <a (click)="handleClickTheme(autor.question_id)">
         {{autor.answer_count}}
       </a>
     </div>
     <div class="search__tags">
-      <a
-        *ngFor="let tag of autor.tags"
-        (click)="handleClickTag(tag)"
-      >
+      <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">
         {{tag}}
       </a>
     </div>

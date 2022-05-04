@@ -7,6 +7,7 @@ import { RecoveryPasswordPageComponent } from './components/recovery-password-pa
 import { ResultPageComponent } from './components/result-page/result-page.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import {ThemePageComponent} from "./components/theme-page/theme-page.component";
 
 const routes: Routes = [
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
       { path: 'search', component: SearchPageComponent, data: {depth: 1} },
       { path: 'result/query/:searchQuery', component: ResultPageComponent, data: {depth: 2} },
+      { path: 'question/:id/:link', component: ThemePageComponent, data: {depth: 3} },
     ]
   },
 ];

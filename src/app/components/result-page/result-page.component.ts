@@ -5,13 +5,15 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   addAuthorData,
   addTagData,
+  addQuestionData,
+  addAnswerData,
   AuthorDataSelector,
   StackOverflowDataSelector,
-  TagDataSelector
 } from '../../reducers/api-data';
 import { StackOverflowDataService } from '../../shared/services/stack-overflow-data.service';
 import { DialogAuthorComponent } from '../../dialog/dialog-author/dialog-author.component';
 import { DialogTagComponent } from '../../dialog/dialog-tag/dialog-tag.component';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-result-page',
@@ -26,6 +28,9 @@ export class ResultPageComponent implements OnInit {
   searchUrl: any
   resultAuthorData: any
   resultTagData: any
+  resultQuestionData: any
+  resultAnswerData: any
+  questionUrl: any
 
   public searchData$ = this.store.select(StackOverflowDataSelector)
   public authorData$ = this.store.select(AuthorDataSelector)
@@ -34,7 +39,7 @@ export class ResultPageComponent implements OnInit {
     public store: Store,
     public dialog: MatDialog,
     private data: StackOverflowDataService,
-
+    private router: Router,
     ) {}
 
   ngOnInit(): void {
@@ -59,12 +64,6 @@ export class ResultPageComponent implements OnInit {
     this.dialog.open(DialogAuthorComponent);
   }
 
-  handleClickTheme() {
-
-  }
-  handleClickAnswers() {
-
-  }
   handleClickTag(tag: string) {
     this.data.getTagData(tag)
       .subscribe(item => {
@@ -72,5 +71,21 @@ export class ResultPageComponent implements OnInit {
         this.store.dispatch(addTagData({tagData: this.resultTagData.items, tagName: tag}))
       })
     this.dialog.open(DialogTagComponent);
+  }
+
+  handleClickTheme(id: number) {
+    this.data.getQuestionData(id)
+    this.data.getAnswerData(id)
+      .subscribe(item => {
+        this.resultAnswerData = item
+        this.store.dispatch(addAnswerData({answerData: this.resultAnswerData.items}))
+      })
+    this.data.getQuestionData(id)
+      .subscribe(item => {
+        this.resultQuestionData = item
+        this.questionUrl = this.resultQuestionData.items[0].link.slice(36)
+        this.store.dispatch(addQuestionData({questionData: this.resultQuestionData.items}))
+        this.router.navigateByUrl(`question/${this.questionUrl}`)
+      })
   }
 }

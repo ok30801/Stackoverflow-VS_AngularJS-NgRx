@@ -8,26 +8,19 @@
     </div>
     <div class="dialog__table-body" *ngFor="let autor of authorData$ | async ">
       <div class="dialog__theme">
-        <a
-          routerLink=""
-          (click)="handleClickTheme()"
-        >
+        <a (click)="handleClickTheme(autor.question_id)">
           {{autor.title}}
         </a>
       </div>
       <div class="dialog__answers">
-        <a
-          routerLink=""
-          (click)="handleClickAnswers()"
-        >
+        <a (click)="handleClickTheme(autor.question_id)">
           {{autor.answer_count}}
         </a>
       </div>
       <div class="dialog__tags">
         <a
-          routerLink=""
           *ngFor="let tag of autor.tags"
-          (click)="handleClickTag()"
+          (click)="handleClickTag(tag)"
         >
           {{tag}}
         </a>
@@ -38,7 +31,8 @@
 
 
   <div mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close (click)="close()">Close</button>
+<!--    <button mat-button mat-dialog-close (click)="close()">Close</button>-->
+    <button mat-button mat-dialog-close>Close</button>
   </div>
 </div>
 

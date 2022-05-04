@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   site: 'stackoverflow',
-  usersDbUrl: 'http://localhost:3004/users',
+  usersDbUrl: 'http://localhost:3000/users',
   // apiUrl: 'https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&q',
-  apiUrl: 'https://api.stackexchange.com/2.3/search/advanced?q=',
-  apiAuthorUrl: 'https://api.stackexchange.com/2.3/users/',
-  apiTagUrl: 'https://api.stackexchange.com/2.3/tags/',
-  apiAnswersUr:'https://api.stackexchange.com/2.3/questions/'
+  getSearchData: 'https://api.stackexchange.com/2.3/search/advanced?q=',
+  getUser: 'https://api.stackexchange.com/2.3/users/',
+  getTags: 'https://api.stackexchange.com/2.3/tags/',
+  getQuestion:'https://api.stackexchange.com/2.3/questions/'
 };
 
 /*

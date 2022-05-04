@@ -26,6 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { DialogAuthorComponent } from './dialog/dialog-author/dialog-author.component';
 import { DialogTagComponent } from './dialog/dialog-tag/dialog-tag.component';
+import { ThemePageComponent } from './components/theme-page/theme-page.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -43,6 +44,7 @@ const maskConfig: Partial<IConfig> = {
     RecoveryPasswordPageComponent,
     DialogAuthorComponent,
     DialogTagComponent,
+    ThemePageComponent,
   ],
   imports: [
     NgbModule,
