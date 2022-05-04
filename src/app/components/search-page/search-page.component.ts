@@ -1,11 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { StackOverflowDataService } from "../../shared/services/stack-overflow-data.service";
+import { StackOverflowDataService } from '../../shared/services/stack-overflow-data.service';
 import { HttpClient } from '@angular/common/http';
-import { addStackOverflowData } from '../../reducers/api-data';
 import { Store } from '@ngrx/store';
+import { addStackOverflowData } from '../../store/actions/actions';
 
 
 @Component({

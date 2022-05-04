@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TagDataSelector, TagNameSelector } from '../../reducers/api-data';
 import { Store } from '@ngrx/store';
-import {OpenModalsService} from "../../shared/services/open-modals.service";
+import { OpenModalsService } from '../../shared/services/open-modals.service';
+import { TagDataSelector, TagNameSelector } from '../../store/selectors/selectors';
 
 @Component({
   selector: 'app-dialog-tag',

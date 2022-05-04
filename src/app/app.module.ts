@@ -19,7 +19,6 @@ import { RecoveryPasswordPageComponent } from './components/recovery-password-pa
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
@@ -27,6 +26,7 @@ import { AppEffects } from './app.effects';
 import { DialogAuthorComponent } from './dialog/dialog-author/dialog-author.component';
 import { DialogTagComponent } from './dialog/dialog-tag/dialog-tag.component';
 import { ThemePageComponent } from './components/theme-page/theme-page.component';
+import { metaReducers, reducers } from "./store";
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -52,8 +52,8 @@ const maskConfig: Partial<IConfig> = {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatFormFieldModule, // добавил
-    MatInputModule, // добавил
+    MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     MaterialExampleModule,
     BrowserAnimationsModule,

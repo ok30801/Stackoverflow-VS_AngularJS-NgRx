@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {QuestionDataSelector, AnswerDataSelector, addAuthorData, addTagData} from "../../reducers/api-data";
 import { Store } from '@ngrx/store';
-import {DialogAuthorComponent} from "../../dialog/dialog-author/dialog-author.component";
-import {DialogTagComponent} from "../../dialog/dialog-tag/dialog-tag.component";
-import {StackOverflowDataService} from "../../shared/services/stack-overflow-data.service";
-import {MatDialog} from "@angular/material/dialog";
+import {DialogAuthorComponent} from '../../dialog/dialog-author/dialog-author.component';
+import {DialogTagComponent} from '../../dialog/dialog-tag/dialog-tag.component';
+import {StackOverflowDataService} from '../../shared/services/stack-overflow-data.service';
+import {MatDialog} from '@angular/material/dialog';
+import {AnswerDataSelector, QuestionDataSelector} from '../../store/selectors/selectors';
+import {addAuthorData, addTagData} from '../../store/actions/actions';
 
 @Component({
   selector: 'app-theme-page',
@@ -40,5 +41,4 @@ export class ThemePageComponent implements OnInit {
       })
     this.dialog.open(DialogTagComponent);
   }
-
 }

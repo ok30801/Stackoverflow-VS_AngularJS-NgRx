@@ -7,7 +7,7 @@ import { RecoveryPasswordPageComponent } from './components/recovery-password-pa
 import { ResultPageComponent } from './components/result-page/result-page.component';
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-import {ThemePageComponent} from "./components/theme-page/theme-page.component";
+import { ThemePageComponent } from "./components/theme-page/theme-page.component";
 
 const routes: Routes = [
 

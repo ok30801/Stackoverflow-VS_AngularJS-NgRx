@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import { AuthorDataSelector } from '../../reducers/api-data';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { OpenModalsService } from "../../shared/services/open-modals.service";
+import { OpenModalsService } from '../../shared/services/open-modals.service';
+import { AuthorDataSelector } from '../../store/selectors/selectors';
 
 @Component({
   selector: 'app-dialog-component',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AuthorDataSelector, StackOverflowDataSelector } from '../../reducers/api-data';
-import { OpenModalsService } from "../../shared/services/open-modals.service";
+import { OpenModalsService } from '../../shared/services/open-modals.service';
+import { AuthorDataSelector, StackOverflowDataSelector } from '../../store/selectors/selectors';
 
 @Component({
   selector: 'app-result-page',

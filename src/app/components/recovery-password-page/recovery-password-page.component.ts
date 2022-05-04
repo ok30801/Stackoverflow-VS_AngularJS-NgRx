@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Alert } from '../../shared/interfaces/interfaces'
 import { UsersService } from '../../shared/services/users.service'
-import {Router, RouterOutlet} from '@angular/router';
+import { Router } from '@angular/router';
 
 const ALERTS: Alert[] = [
   {type: 'warning', message: 'The user with this email is not in the system'}
