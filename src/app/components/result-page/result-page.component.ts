@@ -16,8 +16,11 @@ export class ResultPageComponent implements OnInit  {
   focused!: true
   form!: FormGroup
   formError = false
-  isSorting = false
-  sortingData: any
+  sortingData!: any[]
+  isSortingName = false
+  isSortingTheme = false
+  isSortingAnswers = false
+  isSortingTags = false
 
   public searchData$ = this.store.select(StackOverflowDataSelector)
   public authorData$ = this.store.select(AuthorDataSelector)
@@ -43,19 +46,73 @@ export class ResultPageComponent implements OnInit  {
     this.openModal.handleClickTag(id)
   }
 
-  sorting() {
-    this.isSorting = !this.isSorting
+  sortingName() {
+    this.isSortingName = !this.isSortingName
     this.searchData$.subscribe(item => {
       const array = [...item]
-      this.sortingData = array.sort((a: any, b: any) => {
-        let nameA = a.owner.display_name.toLowerCase()
-        let nameB = b.owner.display_name.toLowerCase()
-        if (nameA < nameB)
-          return -1
-        if (nameA > nameB)
-          return 1
-        return 0
-      })
+      if (this.isSortingName) {
+        this.sortingData = array.sort((a: any, b: any) => {
+          const nameA = a.owner.display_name.toLowerCase()
+          const nameB = b.owner.display_name.toLowerCase()
+          if (nameA < nameB)
+            return -1
+          if (nameA > nameB)
+            return 1
+          return 0
+        })
+      } else {
+        this.sortingData = [...item]
+      }
+    })
+  }
+
+  sortingTheme() {
+    this.isSortingTheme = !this.isSortingTheme
+    this.searchData$.subscribe(item => {
+      const array = [...item]
+      if (this.isSortingTheme) {
+        this.sortingData = array.sort((a: any, b: any) => {
+          const nameA = a.title.toLowerCase()
+          const nameB = b.title.toLowerCase()
+          if (nameA < nameB)
+            return -1
+          if (nameA > nameB)
+            return 1
+          return 0
+        })
+      } else {
+        this.sortingData = [...item]
+      }
+    })
+  }
+  sortingAnswers() {
+    this.isSortingAnswers = !this.isSortingAnswers
+    this.searchData$.subscribe(item => {
+      const array = [...item]
+      if (this.isSortingAnswers) {
+        this.sortingData = array.sort((a: any, b: any) => a.answer_count - b.answer_count)
+      } else {
+        this.sortingData = [...item]
+      }
+    })
+  }
+  sortingTags() {
+    this.isSortingTags = !this.isSortingTags
+    this.searchData$.subscribe(item => {
+      const array = [...item]
+      if (this.isSortingTags) {
+        this.sortingData = array.sort((a: any, b: any) => {
+          const nameA = a.tags[0].toLowerCase()
+          const nameB = b.tags[0].toLowerCase()
+          if (nameA < nameB)
+            return -1
+          if (nameA > nameB)
+            return 1
+          return 0
+        })
+      } else {
+        this.sortingData = [...item]
+      }
     })
   }
 }
