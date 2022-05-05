@@ -17,36 +17,66 @@
 
 <div  *ngIf="(searchData$ | async)?.length; else message">
   <div class="search__header-table">
-    <div class="search__column-author">Author</div>
-    <div class="search__column-theme">Theme</div>
-    <div class="search__column-answers">Answers</div>
-    <div class="search__column-tags">Tags</div>
+    <div class="search__column-author">Author <mat-icon matSuffix (click)="sorting()">unfold_more</mat-icon></div>
+    <div class="search__column-theme">Theme <mat-icon matSuffix (click)="sorting()">unfold_more</mat-icon></div>
+    <div class="search__column-answers">Answers <mat-icon matSuffix (click)="sorting()">unfold_more</mat-icon></div>
+    <div class="search__column-tags">Tags <mat-icon matSuffix (click)="sorting()">unfold_more</mat-icon></div>
   </div>
-  <div class="search__table-body" *ngFor="let autor of searchData$ | async ">
-    <div class="search__author">
-      <a
-        (click)="handleClickAuthor(autor.owner.user_id)"
-      >
-        {{autor.owner.display_name}}
-      </a>
-    </div>
-    <div class="search__theme">
-      <a (click)="handleClickTheme(autor.question_id)">
-        {{autor.title}}
-      </a>
-    </div>
-    <div class="search__answers">
-      <a (click)="handleClickTheme(autor.question_id)">
-        {{autor.answer_count}}
-      </a>
-    </div>
-    <div class="search__tags">
-      <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">
-        {{tag}}
-      </a>
-    </div>
+  <div *ngIf="!isSorting; else sortered">
+    <div class="search__table-body" *ngFor="let autor of searchData$ | async ">
+      <div class="search__author">
+        <a
+          (click)="handleClickAuthor(autor.owner.user_id)"
+        >
+          {{autor.owner.display_name}}
+        </a>
+      </div>
+      <div class="search__theme">
+        <a (click)="handleClickTheme(autor.question_id)">
+          {{autor.title}}
+        </a>
+      </div>
+      <div class="search__answers">
+        <a (click)="handleClickTheme(autor.question_id)">
+          {{autor.answer_count}}
+        </a>
+      </div>
+      <div class="search__tags">
+        <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">
+          {{tag}}
+        </a>
+      </div>
 
+    </div>
   </div>
+
+  <ng-template #sortered>
+    <div class="search__table-body" *ngFor="let autor of sortingData ">
+      <div class="search__author">
+        <a
+          (click)="handleClickAuthor(autor.owner.user_id)"
+        >
+          {{autor.owner.display_name}}
+        </a>
+      </div>
+      <div class="search__theme">
+        <a (click)="handleClickTheme(autor.question_id)">
+          {{autor.title}}
+        </a>
+      </div>
+      <div class="search__answers">
+        <a (click)="handleClickTheme(autor.question_id)">
+          {{autor.answer_count}}
+        </a>
+      </div>
+      <div class="search__tags">
+        <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">
+          {{tag}}
+        </a>
+      </div>
+
+    </div>
+  </ng-template>
 </div>
 <ng-template #message>
   <div class="search__message">
