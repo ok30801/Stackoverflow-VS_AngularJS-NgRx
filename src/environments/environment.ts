@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
+  defaultToken: { token: '3MXW4BhcQnXumqT9z9sgNJaZHpD2' },
   site: 'stackoverflow',
   usersDbUrl: 'http://localhost:3000/users',
-  // apiUrl: 'https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&q',
   getSearchData: 'https://api.stackexchange.com/2.3/search/advanced?q=',
   getUser: 'https://api.stackexchange.com/2.3/users/',
   getTags: 'https://api.stackexchange.com/2.3/tags/',

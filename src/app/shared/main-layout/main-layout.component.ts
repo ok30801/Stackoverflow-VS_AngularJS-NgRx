@@ -19,4 +19,7 @@ export class MainLayoutComponent implements OnInit {
   getDepth(outlet: any) {
     return outlet.activatedRouteData['depth'];
   }
+  logout() {
+    localStorage.removeItem('userData')
+  }
 }

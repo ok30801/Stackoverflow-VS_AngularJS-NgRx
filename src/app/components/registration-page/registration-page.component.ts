@@ -3,9 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Alert } from '../../shared/interfaces/interfaces'
 import { UsersService } from '../../shared/services/users.service'
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 const ALERTS: Alert[] = [
-  {type: 'warning', message: 'Incorrect email or password'}
+  {type: 'warning', message: 'User with this email is already registered'}
 ]
 
 @Component({
@@ -42,21 +43,26 @@ export class RegistrationPageComponent implements OnInit {
   submit() {
     this.reset()
     if (this.form.invalid) return
-
     this.fetchUsers()
   }
 
   fetchUsers() {
     this.usersService.fetchUsers()
-      .subscribe(users => {
-        users.forEach(user => {
-          if (user.email !== this.form.value.email || user.password !== this.form.value.password) {
-            this.formError = true
-          } else {
-            this.router.navigate(['/search'])
-          }
-        })
+      .subscribe(data => {
+        let email = data.some(item => item.email === this.form.value.email)
+
+        if (email) {
+          this.formError = true
+        } else {
+          this.addUser()
+          localStorage.setItem('userData', JSON.stringify(environment.defaultToken))
+          this.router.navigate(['/search'])
+        }
       })
+  }
+
+  addUser() {
+    this.usersService.addUser(this.form.value)
   }
 
   toggleShowPassword() {
