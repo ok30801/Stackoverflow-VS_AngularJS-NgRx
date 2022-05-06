@@ -1,12 +1,23 @@
 .search {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
+  @media (max-width: 540px) {
+    flex-direction: column;
+  }
   &__btn {
-    width: 13%;
+    width: 150px;
     margin-top: 3px;
     height: 52px;
+    padding: 0 20px;
+    @media (max-width: 540px) {
+      margin-top: -30px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
   }
   &__input {
-    width: 85%;
+    max-width: 970px;
+    width: 100%;
   }
 }
