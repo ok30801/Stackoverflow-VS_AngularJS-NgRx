@@ -3,7 +3,8 @@
     <input autoFocus matInput formControlName="searchPhrase" required>
     <mat-error
       *ngIf="form.hasError('required', 'searchPhrase')"
-    >Please enter your password</mat-error>
+    >Please enter your password
+    </mat-error>
   </mat-form-field>
   <button
     mat-stroked-button
@@ -12,52 +13,42 @@
     class="search__btn"
     [class.active]="form.valid && !formError"
     [disabled]="form.invalid || formError"
-  >Search <mat-icon>search</mat-icon></button>
+  >Search
+    <mat-icon>search</mat-icon>
+  </button>
 </form>
 
-<div  *ngIf="(searchData$ | async)?.length; else message">
+<div *ngIf="(searchData$ | async)?.length; else message">
   <div class="search__header-table">
-    <div class="search__column-author">Author <mat-icon matSuffix (click)="sortingName()">unfold_more</mat-icon></div>
-    <div class="search__column-theme">Theme <mat-icon matSuffix (click)="sortingTheme()">unfold_more</mat-icon></div>
-    <div class="search__column-answers">Answers <mat-icon matSuffix (click)="sortingAnswers()">unfold_more</mat-icon></div>
-    <div class="search__column-tags">Tags <mat-icon matSuffix (click)="sortingTags()">unfold_more</mat-icon></div>
-  </div>
-
-<!--  <div *ngIf="!sortingData?.length; else sortered">-->
-    <div class="search__table-body" *ngFor="let autor of searchData$ | async ">
-      <div class="search__author">
-        <a (click)="handleClickAuthor(autor.owner.user_id)">{{autor.owner.display_name}}</a>
-      </div>
-      <div class="search__theme">
-        <a (click)="handleClickTheme(autor.question_id)">{{autor.title}}</a>
-      </div>
-      <div class="search__answers">
-        <a (click)="handleClickTheme(autor.question_id)">{{autor.answer_count}}</a>
-      </div>
-      <div class="search__tags">
-        <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">{{tag}}</a>
-      </div>
+    <div class="search__column-author">Author
+      <mat-icon matSuffix (click)="sortingName()">unfold_more</mat-icon>
+    </div>
+    <div class="search__column-theme">Theme
+      <mat-icon matSuffix (click)="sortingTheme()">unfold_more</mat-icon>
+    </div>
+    <div class="search__column-answers">Answers
+      <mat-icon matSuffix (click)="sortingAnswers()">unfold_more</mat-icon>
+    </div>
+    <div class="search__column-tags">Tags
+      <mat-icon matSuffix (click)="sortingTags()">unfold_more</mat-icon>
     </div>
   </div>
 
-<!--  <ng-template #sortered>-->
-<!--    <div class="search__table-body" *ngFor="let autor of sortingData">-->
-<!--      <div class="search__author">-->
-<!--        <a (click)="handleClickAuthor(autor.owner.user_id)">{{autor.owner.display_name}}</a>-->
-<!--      </div>-->
-<!--      <div class="search__theme">-->
-<!--        <a (click)="handleClickTheme(autor.question_id)">{{autor.title}}</a>-->
-<!--      </div>-->
-<!--      <div class="search__answers">-->
-<!--        <a (click)="handleClickTheme(autor.question_id)">{{autor.answer_count}}</a>-->
-<!--      </div>-->
-<!--      <div class="search__tags">-->
-<!--        <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">{{tag}}</a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </ng-template>-->
-
-<!--</div>-->
+  <div class="search__table-body" *ngFor="let autor of searchData$ | async ">
+    <div class="search__author">
+      <a (click)="handleClickAuthor(autor.owner.user_id)">{{autor.owner.display_name}}</a>
+    </div>
+    <div class="search__theme">
+      <a (click)="handleClickTheme(autor.question_id)">{{autor.title}}</a>
+    </div>
+    <div class="search__answers">
+      <a (click)="handleClickTheme(autor.question_id)">{{autor.answer_count}}</a>
+    </div>
+    <div class="search__tags">
+      <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">{{tag}}</a>
+    </div>
+  </div>
+</div>
 
 <ng-template #message>
   <div class="search__message">

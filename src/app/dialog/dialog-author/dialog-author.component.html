@@ -2,30 +2,26 @@
   <mat-dialog-content class="mat-typography">
     <h1 mat-dialog-title>Author: {{authorName}}</h1>
     <div class="dialog__header-table">
-      <div class="dialog__column-theme">Theme</div>
-      <div class="dialog__column-answers">Answers</div>
-      <div class="dialog__column-tags">Tags</div>
+      <div class="dialog__column-theme">Theme
+        <mat-icon matSuffix (click)="sortingTheme()">unfold_more</mat-icon>
+      </div>
+      <div class="dialog__column-answers">Answers
+        <mat-icon matSuffix (click)="sortingAnswers()">unfold_more</mat-icon>
+      </div>
+      <div class="dialog__column-tags">Tags
+        <mat-icon matSuffix (click)="sortingTags()">unfold_more</mat-icon>
+      </div>
     </div>
     <div class="dialog__table-body" *ngFor="let autor of authorData$ | async ">
       <div class="dialog__theme">
-        <a (click)="handleClickTheme(autor.question_id)">
-          {{autor.title}}
-        </a>
+        <a (click)="handleClickTheme(autor.question_id)">{{autor.title}}</a>
       </div>
       <div class="dialog__answers">
-        <a (click)="handleClickTheme(autor.question_id)">
-          {{autor.answer_count}}
-        </a>
+        <a (click)="handleClickTheme(autor.question_id)">{{autor.answer_count}}</a>
       </div>
       <div class="dialog__tags">
-        <a
-          *ngFor="let tag of autor.tags"
-          (click)="handleClickTag(tag)"
-        >
-          {{tag}}
-        </a>
+        <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">{{tag}}</a>
       </div>
-
     </div>
   </mat-dialog-content>
 

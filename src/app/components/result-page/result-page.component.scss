@@ -100,6 +100,15 @@
       }
     }
   }
+  &__author,
+  &__theme,
+  &__tags,
+  &__answers {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__message {
     text-align: center;
   }

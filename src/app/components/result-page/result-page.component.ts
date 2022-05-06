@@ -21,8 +21,6 @@ export class ResultPageComponent implements OnInit  {
   isSortingTags = false
 
   public searchData$ = this.store.select(StackOverflowDataSelector)
-  public authorData$ = this.store.select(AuthorDataSelector)
-
 
   constructor(public store: Store, private openModal: OpenModalsService, private sorting: SortingService) {}
 
@@ -48,12 +46,12 @@ export class ResultPageComponent implements OnInit  {
 
   sortingName() {
     this.isSortingName = !this.isSortingName
-    this.sorting.sortingAuthorTheme(this.isSortingName)
+    this.sorting.sortingAuthor(this.isSortingName)
   }
 
   sortingTheme() {
     this.isSortingTheme = !this.isSortingTheme
-    this.sorting.sortingAuthorTheme(this.isSortingTheme)
+    this.sorting.sortingTheme(this.isSortingTheme)
   }
   sortingAnswers() {
     this.isSortingAnswers = !this.isSortingAnswers
@@ -62,23 +60,5 @@ export class ResultPageComponent implements OnInit  {
   sortingTags() {
     this.isSortingTags = !this.isSortingTags
     this.sorting.sortingTags(this.isSortingTags)
-
-  //   this.isSortingTags = !this.isSortingTags
-  //   this.searchData$.subscribe(item => {
-  //     const array = [...item]
-  //     if (this.isSortingTags) {
-  //       this.sortingData = array.sort((a: any, b: any) => {
-  //         const nameA = a.tags[0].toLowerCase()
-  //         const nameB = b.tags[0].toLowerCase()
-  //         if (nameA < nameB)
-  //           return -1
-  //         if (nameA > nameB)
-  //           return 1
-  //         return 0
-  //       })
-  //     } else {
-  //       this.sortingData = item
-  //     }
-  //   })
   }
 }

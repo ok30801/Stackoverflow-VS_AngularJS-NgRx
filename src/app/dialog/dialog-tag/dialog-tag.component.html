@@ -2,28 +2,28 @@
   <mat-dialog-content class="mat-typography">
     <h1 mat-dialog-title>Popular questions for this tag: {{tagName$ | async}}</h1>
     <div class="dialog__header-table">
-      <div class="dialog__column-author">Author</div>
-      <div class="dialog__column-theme">Theme</div>
-      <div class="dialog__column-answers">Answers</div>
+      <div class="dialog__column-author">Author
+        <mat-icon matSuffix (click)="sortingName()">unfold_more</mat-icon>
+      </div>
+      <div class="dialog__column-theme">Theme
+        <mat-icon matSuffix (click)="sortingTheme()">unfold_more</mat-icon>
+      </div>
+      <div class="dialog__column-answers">Answers
+        <mat-icon matSuffix (click)="sortingAnswers()">unfold_more</mat-icon>
+      </div>
     </div>
     <div class="dialog__table-body" *ngFor="let tag of tagData$ | async ">
       <div class="dialog__author">
-        <a (click)="handleClickAuthor(tag.owner.user_id)">
-          {{tag.owner.display_name}}</a>
+        <a (click)="handleClickAuthor(tag.owner.user_id)">{{tag.owner.display_name}}</a>
       </div>
       <div class="dialog__theme">
-        <a (click)="handleClickTheme(tag.question_id)">
-          {{tag.title}}
-        </a>
+        <a (click)="handleClickTheme(tag.question_id)">{{tag.title}}</a>
       </div>
       <div class="dialog__answers">
-        <a (click)="handleClickTheme(tag.question_id)">
-          {{tag.answer_count}}
-        </a>
+        <a (click)="handleClickTheme(tag.question_id)">{{tag.answer_count}}</a>
       </div>
     </div>
   </mat-dialog-content>
-
 
   <div mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Close</button>
