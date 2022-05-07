@@ -6,7 +6,7 @@ import {
   TagDataSelector,
   TagNameSelector
 } from '../../store/selectors/selectors';
-import {addAuthorData, addStackOverflowData, addTagData} from '../../store/actions/actions';
+import {addAuthorData, apiData, addTagData} from '../../store/actions/actions';
 
 
 @Injectable({ providedIn: 'root' })
@@ -48,7 +48,8 @@ export class SortingService {
         })
       }
     })
-    this.store.dispatch(addStackOverflowData({payload: this.sortingData}))
+    localStorage.setItem('searchData', JSON.stringify(this.sortingData))
+    this.store.dispatch(apiData({payload: this.sortingData}))
   }
 
   sortingTheme(isSorting: boolean) {
@@ -72,7 +73,8 @@ export class SortingService {
         })
       }
     })
-    this.store.dispatch(addStackOverflowData({payload: this.sortingData}))
+    localStorage.setItem('searchData', JSON.stringify(this.sortingData))
+    this.store.dispatch(apiData({payload: this.sortingData}))
   }
 
   sortingAnswers(isSorting: boolean) {
@@ -84,7 +86,8 @@ export class SortingService {
         this.sortingData = array.sort((a: any, b: any) => b.answer_count - a.answer_count)
       }
     })
-    this.store.dispatch(addStackOverflowData({payload: this.sortingData}))
+    localStorage.setItem('searchData', JSON.stringify(this.sortingData))
+    this.store.dispatch(apiData({payload: this.sortingData}))
   }
 
   sortingTags(isSorting: boolean) {
@@ -112,7 +115,8 @@ export class SortingService {
         })
       }
     })
-    this.store.dispatch(addStackOverflowData({payload: this.sortingData}))
+    localStorage.setItem('searchData', JSON.stringify(this.sortingData))
+    this.store.dispatch(apiData({payload: this.sortingData}))
   }
 
   /* Sorting in modals author*/

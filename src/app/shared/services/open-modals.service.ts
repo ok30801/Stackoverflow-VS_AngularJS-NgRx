@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { StackOverflowDataService } from './stack-overflow-data.service';
+import { ApiService } from './api.service';
 import { DialogAuthorComponent } from '../../dialog/dialog-author/dialog-author.component';
 import { DialogTagComponent } from '../../dialog/dialog-tag/dialog-tag.component';
 import { addAnswerData, addAuthorData, addQuestionData, addTagData } from '../../store/actions/actions';
@@ -20,7 +20,7 @@ export class OpenModalsService {
   constructor(
     public store: Store,
     public dialog: MatDialog,
-    private data: StackOverflowDataService,
+    private data: ApiService,
     private router: Router,
   ) { }
 

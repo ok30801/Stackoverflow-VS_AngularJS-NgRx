@@ -3,13 +3,25 @@
     <h1 mat-dialog-title>Author: {{authorName}}</h1>
     <div class="dialog__header-table">
       <div class="dialog__column-theme">Theme
-        <mat-icon matSuffix (click)="sortingTheme()">unfold_more</mat-icon>
+        <mat-icon
+          matSuffix
+          [class.dialog__icon-hide]="(authorData$ | async)?.length < 3"
+          (click)="sortingTheme()"
+        >unfold_more</mat-icon>
       </div>
       <div class="dialog__column-answers">Answers
-        <mat-icon matSuffix (click)="sortingAnswers()">unfold_more</mat-icon>
+        <mat-icon
+          matSuffix
+          [class.dialog__icon-hide]="(authorData$ | async)?.length < 3"
+          (click)="sortingAnswers()"
+        >unfold_more</mat-icon>
       </div>
       <div class="dialog__column-tags">Tags
-        <mat-icon matSuffix (click)="sortingTags()">unfold_more</mat-icon>
+        <mat-icon
+          matSuffix
+          [class.dialog__icon-hide]="(authorData$ | async)?.length < 3"
+          (click)="sortingTags()"
+        >unfold_more</mat-icon>
       </div>
     </div>
     <div class="dialog__table-body" *ngFor="let autor of authorData$ | async ">

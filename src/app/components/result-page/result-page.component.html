@@ -52,7 +52,9 @@
 
 <ng-template #message>
   <div class="search__message">
-    Sorry, no information was found for this query. Please try again
+    Sorry, your search -
+    <strong>"{{searchQuery.query}}"</strong>
+    did not match any information. Please try again.
   </div>
 </ng-template>
 

@@ -1,4 +1,4 @@
-import { addStackOverflowData, addAuthorData, addTagData, addQuestionData, addAnswerData, clearData } from '../actions/actions'
+import { apiData, addAuthorData, addTagData, addQuestionData, addAnswerData, clearData } from '../actions/actions'
 import { createReducer, on } from "@ngrx/store";
 
 export interface StackOverflowDataState {
@@ -8,13 +8,14 @@ export interface StackOverflowDataState {
   tagName: string
   questionData: any
   answerData: any
+  // searchQuery: any
 }
 
 export const initialState: any = []
 
 export const StackOverflowDataReducer = createReducer(
   initialState,
-  on(addStackOverflowData, (state, {payload}) => ({
+  on(apiData, (state, {payload}) => ({
     ...state,
     searchData: payload
   })),
@@ -35,6 +36,10 @@ export const StackOverflowDataReducer = createReducer(
     ...state,
     answerData: answerData,
   })),
+  // on(addSearchQuery, (state, {searchQuery}) => ({
+  //   ...state,
+  //   searchQuery: searchQuery,
+  // })),
   on(clearData, state => ({
     ...state,
     authorData: [],

@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-export const addStackOverflowData = createAction(
-  '[STACKOVERFLOW_DATA] addStackOverflowData', props<{ payload: any }>()
+export const apiData = createAction(
+  '[API_DATA] apiData', props<{ payload: any }>()
 )
 
 export const addAuthorData = createAction(
@@ -19,6 +19,9 @@ export const addAnswerData = createAction(
 export const addQuestionData = createAction(
   '[QUESTION_DATA] addQuestionData', props<{ questionData: any }>()
 )
+// export const addSearchQuery = createAction(
+//   '[SEARCH_QUERY] searchQuery', props<{ searchQuery: any }>()
+// )
 export const clearData = createAction(
   '[CLEAR_DATA] clearData'
 )

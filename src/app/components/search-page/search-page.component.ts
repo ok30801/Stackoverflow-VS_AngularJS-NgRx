@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { StackOverflowDataService } from '../../shared/services/stack-overflow-data.service';
+import { ApiService } from '../../shared/services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { addStackOverflowData } from '../../store/actions/actions';
-
+import { apiData } from '../../store/actions/actions';
 
 @Component({
   selector: 'app-search-page',
@@ -23,7 +22,7 @@ export class SearchPageComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private data: StackOverflowDataService,
+    private data: ApiService,
     private store: Store,
   ) { }
 
@@ -39,13 +38,16 @@ export class SearchPageComponent implements OnInit {
       this.router.navigateByUrl(`result/query/${this.form.value.searchPhrase}`)
     }
     this.getStackOverflowData()
+    const searchQuery = {query: this.form.value.searchPhrase}
+    localStorage.setItem('searchQuery', JSON.stringify(searchQuery))
   }
 
   getStackOverflowData() {
     this.data.getStackOverflowData(this.form.value.searchPhrase)
       .subscribe(item => {
         this.resultObject = item
-        this.store.dispatch(addStackOverflowData({payload: this.resultObject.items}))
+        localStorage.setItem('searchData', JSON.stringify(this.resultObject.items))
+        this.store.dispatch(apiData({payload: this.resultObject.items}))
       })
   }
 }

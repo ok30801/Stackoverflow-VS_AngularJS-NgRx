@@ -124,6 +124,12 @@
   &__answers,
   &__column-answers {
     width: 9%;
+    & a {
+      @media (max-width: 540px) {
+        background: #849980;
+        color: #fff;
+      }
+    }
     @media (max-width: 540px) {
       width: 100%;
       text-align: start;
@@ -149,7 +155,7 @@
       transition: all .3s;
       @media (max-width: 540px) {
         padding: 5px 8px;
-        background: #90c6fd;
+        background: #849980;
         color: #fff;
       }
       &:hover {
