@@ -1,13 +1,12 @@
-import {Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { OpenModalsService } from '../../shared/services/open-modals.service';
-import {IsSuccessSearchSelector, SearchQuerySelector, StackOverflowDataSelector} from '../../store/selectors/selectors';
+import { IsSuccessSearchSelector, SearchQuerySelector, StackOverflowDataSelector } from '../../store/selectors/selectors';
 import { SortingService } from '../../shared/services/sorting.service';
-import {addSearchQuery, apiData, isSuccessSearch} from '../../store/actions/actions';
+import { addSearchQuery, apiData, isSuccessSearch } from '../../store/actions/actions';
 import { ApiService } from '../../shared/services/api.service';
 import { LoadingService } from '../../shared/services/loading.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result-page',
@@ -37,7 +36,6 @@ export class ResultPageComponent implements OnInit  {
     private sorting: SortingService,
     private data: ApiService,
     public loader: LoadingService,
-    private router: Router,
   ) {}
 
   ngOnInit(): void {

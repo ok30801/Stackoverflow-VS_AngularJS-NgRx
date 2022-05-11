@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../shared/services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import {isSuccessSearch, apiData, addSearchQuery} from '../../store/actions/actions';
+import { isSuccessSearch, apiData, addSearchQuery } from '../../store/actions/actions';
 
 @Component({
   selector: 'app-search-page',

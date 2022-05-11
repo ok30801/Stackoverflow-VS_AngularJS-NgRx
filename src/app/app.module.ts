@@ -27,7 +27,6 @@ import { DialogAuthorComponent } from './dialog/dialog-author/dialog-author.comp
 import { DialogTagComponent } from './dialog/dialog-tag/dialog-tag.component';
 import { ThemePageComponent } from './components/theme-page/theme-page.component';
 import { metaReducers, reducers } from "./store";
-import { LoaderComponent } from './components/loader/loader.component';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { NetworkInterceptor } from './shared/services/network.interceptor';
 
@@ -49,7 +48,6 @@ const maskConfig: Partial<IConfig> = {
     DialogAuthorComponent,
     DialogTagComponent,
     ThemePageComponent,
-    LoaderComponent,
     NotFoundPageComponent,
   ],
   imports: [

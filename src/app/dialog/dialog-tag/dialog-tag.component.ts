@@ -20,7 +20,6 @@ export class DialogTagComponent implements OnInit {
   isSortingAnswers = false
   isSortingTags = false
 
-
   constructor(public store: Store, private openModal: OpenModalsService, private sorting: SortingService){ }
 
   ngOnInit(): void{ }

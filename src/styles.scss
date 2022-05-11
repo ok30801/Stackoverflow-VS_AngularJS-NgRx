@@ -13,7 +13,7 @@
   --hover-link: #958585;
 }
 
-///*Обнуление*/
+/*Обнуление*/
 *{
   padding: 0;
   margin: 0;
@@ -76,9 +76,7 @@ p {
   @media (max-width: 540px) {
     padding: 0 10px;
   }
-
 }
-
 
 /*-------------- Custom style fields ----------------*/
 
@@ -113,7 +111,6 @@ p {
 .mat-form-field-appearance-outline .mat-form-field-outline {
   color: var(--secondary-color);
 }
-
 
 /*-------------- Custom style buttons ----------------*/
 

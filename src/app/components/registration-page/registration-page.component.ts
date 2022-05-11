@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert } from '../../shared/interfaces/interfaces'
-import { UsersService } from '../../shared/services/users.service'
+import { Alert } from '../../shared/interfaces/interfaces';
+import { UsersService } from '../../shared/services/users.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import {EventManager} from '@angular/platform-browser';
 
 const ALERTS: Alert[] = [
   {type: 'warning', message: 'User with this email is already registered'}
@@ -25,7 +24,6 @@ export class RegistrationPageComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private router: Router,
-    private eventManager: EventManager
   ) {}
 
   close(alert: Alert) {

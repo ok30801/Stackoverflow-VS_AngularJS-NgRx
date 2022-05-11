@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert } from '../../shared/interfaces/interfaces'
-import { UsersService } from '../../shared/services/users.service'
+import { Alert } from '../../shared/interfaces/interfaces';
+import { UsersService } from '../../shared/services/users.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import {EventManager} from '@angular/platform-browser';
 
 const ALERTS: Alert[] = [
   {type: 'warning', message: 'Incorrect email or password'}
@@ -23,8 +22,7 @@ export class AuthPageComponent implements OnInit {
   formError = false
   showPassword = false
 
-  constructor(private usersService: UsersService, private router: Router) {
-    console.log('constructor')}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   close(alert: Alert) {
     this.formError = false
@@ -43,7 +41,6 @@ export class AuthPageComponent implements OnInit {
     if(localStorage.getItem('userData')) {
       this.router.navigate(['/search'])
     }
-    console.log('ngOnInit')
   }
 
   submit() {

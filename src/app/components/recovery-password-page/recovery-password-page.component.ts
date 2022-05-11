@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alert } from '../../shared/interfaces/interfaces'
-import { UsersService } from '../../shared/services/users.service'
-import { Router } from '@angular/router';
-import {EventManager} from '@angular/platform-browser';
+import { Alert } from '../../shared/interfaces/interfaces';
+import { UsersService } from '../../shared/services/users.service';
 
 const ALERTS: Alert[] = [
   {type: 'warning', message: 'The user with this email is not in the system'}
@@ -22,11 +20,7 @@ export class RecoveryPasswordPageComponent implements OnInit {
   formError = false
   successfullySent = false
 
-  constructor(
-    private usersService: UsersService,
-    private router: Router,
-    private eventManager: EventManager
-  ) {}
+  constructor(private usersService: UsersService) {}
 
   close(alert: Alert) {
     this.formError = false

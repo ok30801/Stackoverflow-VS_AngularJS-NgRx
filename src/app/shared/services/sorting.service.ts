@@ -6,7 +6,7 @@ import {
   TagDataSelector,
   TagNameSelector
 } from '../../store/selectors/selectors';
-import {addAuthorData, apiData, addTagData} from '../../store/actions/actions';
+import { addAuthorData, apiData, addTagData } from '../../store/actions/actions';
 
 
 @Injectable({ providedIn: 'root' })
