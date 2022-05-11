@@ -9,6 +9,7 @@ import { MainLayoutComponent } from './shared/main-layout/main-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { ThemePageComponent } from "./components/theme-page/theme-page.component";
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { AuthGuard } from './shared/auth.guards/auth.guards';
 
 const routes: Routes = [
 
@@ -19,8 +20,8 @@ const routes: Routes = [
       { path: 'registration', component: RegistrationPageComponent, data: {depth: 3} },
     ]
   },
-  { path: '', component: MainLayoutComponent, children: [
-      { path: 'search', component: SearchPageComponent, data: {depth: 1} },
+  { path: '', component: MainLayoutComponent, canActivate:[AuthGuard], children: [
+      { path: 'search', component: SearchPageComponent,pathMatch: 'full', data: {depth: 1} },
       { path: 'result/query/:searchQuery', component: ResultPageComponent, data: {depth: 2} },
       { path: 'question/:id/:link', component: ThemePageComponent, data: {depth: 3} },
     ]

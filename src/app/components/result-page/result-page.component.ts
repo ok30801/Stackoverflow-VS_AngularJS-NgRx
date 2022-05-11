@@ -7,6 +7,7 @@ import { SortingService } from '../../shared/services/sorting.service';
 import {addSearchQuery, apiData, isSuccessSearch} from '../../store/actions/actions';
 import { ApiService } from '../../shared/services/api.service';
 import { LoadingService } from '../../shared/services/loading.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result-page',
@@ -36,6 +37,7 @@ export class ResultPageComponent implements OnInit  {
     private sorting: SortingService,
     private data: ApiService,
     public loader: LoadingService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
