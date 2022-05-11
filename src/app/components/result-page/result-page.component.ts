@@ -48,6 +48,7 @@ export class ResultPageComponent implements OnInit  {
     this.store.dispatch(addSearchQuery({payload: searchQuery.query}))
     const searchDataLocal = JSON.parse(localStorage.getItem('searchData') || '{}')
     this.store.dispatch(apiData({payload: searchDataLocal}))
+    searchDataLocal ? this.store.dispatch(isSuccessSearch({payload: true})) : false
   }
 
   handleSearch() {
