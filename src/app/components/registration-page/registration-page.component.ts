@@ -4,6 +4,7 @@ import { Alert } from '../../shared/interfaces/interfaces'
 import { UsersService } from '../../shared/services/users.service'
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import {EventManager} from '@angular/platform-browser';
 
 const ALERTS: Alert[] = [
   {type: 'warning', message: 'User with this email is already registered'}
@@ -21,7 +22,11 @@ export class RegistrationPageComponent implements OnInit {
   formError = false
   showPassword = false
 
-  constructor(private usersService: UsersService, private router: Router) {}
+  constructor(
+    private usersService: UsersService,
+    private router: Router,
+    private eventManager: EventManager
+  ) {}
 
   close(alert: Alert) {
     this.formError = false

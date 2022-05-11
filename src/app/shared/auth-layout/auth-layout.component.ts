@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { slider, myAnimation} from '../services/route-animations';
+import { slider } from '../services/route-animations';
 
 @Component({
   selector: 'app-auth-layout',
@@ -7,7 +7,6 @@ import { slider, myAnimation} from '../services/route-animations';
   styleUrls: ['./auth-layout.component.scss'],
   animations: [
     slider,
-    // myAnimation
   ]
 })
 export class AuthLayoutComponent implements OnInit {

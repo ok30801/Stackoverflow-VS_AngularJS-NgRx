@@ -54,6 +54,14 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
+.mat-typography h1 {
+  margin: 0;
+}
+
+p {
+  overflow: auto !important;
+}
+
 /*----------------- Style Layouts -------------------*/
 .wrapper {
   height: 100%;
@@ -139,7 +147,9 @@ button.mat-button-disabled > span {
   background-color: var(--secondary-color);
 }
 .mat-dialog-actions {
-  //justify-content: end;
+    min-height: 65px !important;
+    margin-right: 24px !important;
+  margin-bottom: 0 !important;
 }
 button.mat-focus-indicator.mat-button.mat-button-base {
   border: 1px solid;
@@ -154,5 +164,44 @@ button.mat-focus-indicator.mat-button.mat-button-base {
 }
 .cdk-overlay-pane {
   max-width: 800px !important;
-  width: 100%;
+  width: auto;
 }
+.mat-dialog-container {
+  width: auto;
+  padding: 0!important;
+}
+.mat-dialog-content {
+  margin: 0!important;
+  padding: 24px !important;
+}
+
+/* Loader */
+mat-progress-spinner {
+  position: absolute !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3000;
+  & svg {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  @media (max-width: 540px) {
+    top: 3%;
+    transform: translate(-32%, -50%);
+  }
+}
+
+.overlay {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+  @media (max-width: 540px) {
+    top: 150px;
+  }
+}
+

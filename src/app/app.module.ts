@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResultPageComponent } from './components/result-page/result-page.component';
 import { SearchPageComponent } from './components/search-page/search-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { MaterialExampleModule } from '../material.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,10 +27,14 @@ import { DialogAuthorComponent } from './dialog/dialog-author/dialog-author.comp
 import { DialogTagComponent } from './dialog/dialog-tag/dialog-tag.component';
 import { ThemePageComponent } from './components/theme-page/theme-page.component';
 import { metaReducers, reducers } from "./store";
+import { LoaderComponent } from './components/loader/loader.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { NetworkInterceptor } from './shared/services/network.interceptor';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
+
 
 @NgModule({
   declarations: [
@@ -45,6 +49,8 @@ const maskConfig: Partial<IConfig> = {
     DialogAuthorComponent,
     DialogTagComponent,
     ThemePageComponent,
+    LoaderComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     NgbModule,
@@ -64,7 +70,7 @@ const maskConfig: Partial<IConfig> = {
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AppEffects])
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

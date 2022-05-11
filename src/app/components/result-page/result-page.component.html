@@ -18,7 +18,7 @@
   </button>
 </form>
 
-<div *ngIf="(searchData$ | async)?.length; else message">
+<div *ngIf="(searchData$ | async)?.length">
   <div class="search__header-table">
     <div class="search__column-author">Author
       <mat-icon matSuffix (click)="sortingName()">unfold_more</mat-icon>
@@ -50,13 +50,15 @@
   </div>
 </div>
 
-<ng-template #message>
-  <div class="search__message">
-    Sorry, your search -
-    <strong>"{{searchQuery.query}}"</strong>
-    did not match any information. Please try again.
-  </div>
-</ng-template>
+<div class="search__message" *ngIf="!hideMassage && !(loading$ | async)">
+  Sorry, your search -
+  <strong>"{{SearchQuerySelector$ | async}}"</strong>
+  did not match any information. Please try again.
+</div>
 
 
+<ng-container *ngIf="loading$ | async">
+  <div class="overlay"></div>
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</ng-container>
 

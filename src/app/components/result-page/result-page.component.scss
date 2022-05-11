@@ -172,8 +172,10 @@
       cursor: pointer;
     }
   }
-
   &__message {
+    text-align: center;
+  }
+  &__loader {
     text-align: center;
   }
 }

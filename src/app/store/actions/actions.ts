@@ -19,9 +19,15 @@ export const addAnswerData = createAction(
 export const addQuestionData = createAction(
   '[QUESTION_DATA] addQuestionData', props<{ questionData: any }>()
 )
-// export const addSearchQuery = createAction(
-//   '[SEARCH_QUERY] searchQuery', props<{ searchQuery: any }>()
-// )
-export const clearData = createAction(
-  '[CLEAR_DATA] clearData'
+export const isSuccessSearch = createAction(
+  '[IS_SUCCESS_SEARCH] isSuccessSearch', props<{ payload: boolean }>()
+)
+export const addSearchQuery = createAction(
+  '[SEARCH_QUERY] addSearchQuery', props<{ payload: any }>()
+)
+export const clearDataDialogAuthor = createAction(
+  '[CLEAR_DATA_DIALOG_AUTHOR] clearDataDialogAuthor'
+)
+export const clearDataDialogTag = createAction(
+  '[CLEAR_DATA_DIALOG_TAG] clearDataDialogTAG'
 )

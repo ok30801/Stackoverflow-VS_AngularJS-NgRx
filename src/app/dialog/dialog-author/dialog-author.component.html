@@ -1,6 +1,6 @@
-<div class="dialog" *ngIf="(authorData$ | async)?.length; else loader">
+<div class="dialog" *ngIf="(authorData$ | async)?.length">
   <mat-dialog-content class="mat-typography">
-    <h1 mat-dialog-title>Author: {{authorName}}</h1>
+    <h1 dialog__title><img src="{{avatar}}" alt="avatar"> {{authorName}}</h1>
     <div class="dialog__header-table">
       <div class="dialog__column-theme">Theme
         <mat-icon
@@ -26,10 +26,10 @@
     </div>
     <div class="dialog__table-body" *ngFor="let autor of authorData$ | async ">
       <div class="dialog__theme">
-        <a (click)="handleClickTheme(autor.question_id)">{{autor.title}}</a>
+        <a (click)="handleClickTheme(autor.question_id)" mat-dialog-close>{{autor.title}}</a>
       </div>
       <div class="dialog__answers">
-        <a (click)="handleClickTheme(autor.question_id)">{{autor.answer_count}}</a>
+        <a (click)="handleClickTheme(autor.question_id)" mat-dialog-close>{{autor.answer_count}}</a>
       </div>
       <div class="dialog__tags">
         <a *ngFor="let tag of autor.tags" (click)="handleClickTag(tag)">{{tag}}</a>
@@ -37,12 +37,9 @@
     </div>
   </mat-dialog-content>
 
-
   <div mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button mat-dialog-close (click)="close()">Close</button>
   </div>
 </div>
-
-<ng-template #loader>...Loading</ng-template>
 
 

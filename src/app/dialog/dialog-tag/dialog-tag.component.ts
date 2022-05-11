@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { OpenModalsService } from '../../shared/services/open-modals.service';
 import { TagDataSelector, TagNameSelector } from '../../store/selectors/selectors';
-import {SortingService} from '../../shared/services/sorting.service';
+import { SortingService } from '../../shared/services/sorting.service';
+import { clearDataDialogTag } from '../../store/actions/actions';
 
 @Component({
   selector: 'app-dialog-tag',
@@ -44,5 +45,8 @@ export class DialogTagComponent implements OnInit {
   sortingAnswers() {
     this.isSortingAnswers = !this.isSortingAnswers
     this.sorting.sortingAnswersModalTags(this.isSortingAnswers)
+  }
+  close() {
+    this.store.dispatch(clearDataDialogTag())
   }
 }

@@ -33,12 +33,19 @@ export const QuestionDataSelector = createSelector(
     return state.questionData
   }
 )
-// export const SearchQuerySelector = createSelector(
-//   featureSelector,
-//   state => {
-//     return state.searchQuery
-//   }
-// )
+export const IsSuccessSearchSelector = createSelector(
+  featureSelector,
+  state => {
+    return state.isSuccessSearch
+  }
+)
+
+export const SearchQuerySelector = createSelector(
+  featureSelector,
+  state => {
+    return state.searchQuery
+  }
+)
 
 export const AnswerDataSelector = createSelector(
   featureSelector,

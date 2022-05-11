@@ -23,7 +23,7 @@ export const slider = trigger('routeAnimation', [
           ))),
     ]),
   ]),
-  transition('3 => 2, 3 => 1, 2 => 1', [
+  transition('3 => 2, 2 => 1, 3 => 1', [
     style({ height: '!' }),
     query(':enter', style({ transform: 'translateX(-100%)' })),
     query(':enter, :leave', style({ position: 'absolute', top: 0, left: '30px', right: '30px' })),
@@ -40,23 +40,5 @@ export const slider = trigger('routeAnimation', [
   ]),
 ])
 
-export const myAnimation = trigger("routeAnimation", [
-  transition("* <=> *", [
-    query(':enter, :leave', style({ position: 'absolute', top: 0, left: '30px', right: '30px' })),
-    query(":enter", [style({ opacity: 0 })], { optional: true }),
-
-    query(
-      ":leave",
-      [style({ opacity: 1 }), animate("0.2s", style({ opacity: 0 }))],
-      { optional: true }
-    ),
-
-    query(
-      ":enter",
-      [style({ opacity: 0 }), animate("0.2s", style({ opacity: 1 }))],
-      { optional: true }
-    ),
-  ]),
-]);
 
 

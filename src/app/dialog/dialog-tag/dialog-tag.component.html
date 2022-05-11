@@ -1,4 +1,4 @@
-<div class="dialog" *ngIf="(tagData$ | async)?.length; else loader">
+<div class="dialog" *ngIf="(tagData$ | async)?.length">
   <mat-dialog-content class="mat-typography">
     <h1 mat-dialog-title>Popular questions for this tag: {{tagName$ | async}}</h1>
     <div class="dialog__header-table">
@@ -29,20 +29,19 @@
         <a (click)="handleClickAuthor(tag.owner.user_id)">{{tag.owner.display_name}}</a>
       </div>
       <div class="dialog__theme">
-        <a (click)="handleClickTheme(tag.question_id)">{{tag.title}}</a>
+        <a (click)="handleClickTheme(tag.question_id)" mat-dialog-close>{{tag.title}}</a>
       </div>
       <div class="dialog__answers">
-        <a (click)="handleClickTheme(tag.question_id)">{{tag.answer_count}}</a>
+        <a (click)="handleClickTheme(tag.question_id)" mat-dialog-close>{{tag.answer_count}}</a>
       </div>
     </div>
   </mat-dialog-content>
 
   <div mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button mat-dialog-close (click)="close()">Close</button>
   </div>
 </div>
 
-<ng-template #loader>...Loading</ng-template>
 
 
 

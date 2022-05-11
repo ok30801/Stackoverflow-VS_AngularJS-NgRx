@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { slider, myAnimation } from '../services/route-animations';
+import { slider } from '../services/route-animations';
+import { clearDataDialogAuthor, isSuccessSearch } from '../../store/actions/actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
   animations: [
-    slider,
-    // myAnimation
+    slider
   ]
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public store: Store) { }
 
   ngOnInit(): void { }
 
@@ -20,6 +21,8 @@ export class MainLayoutComponent implements OnInit {
     return outlet.activatedRouteData['depth'];
   }
   logout() {
-    localStorage.removeItem('userData')
+    localStorage.clear();
+    this.store.dispatch(clearDataDialogAuthor())
+    this.store.dispatch(isSuccessSearch({payload: false}))
   }
 }

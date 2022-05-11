@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../shared/services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { apiData } from '../../store/actions/actions';
+import {isSuccessSearch, apiData, addSearchQuery} from '../../store/actions/actions';
 
 @Component({
   selector: 'app-search-page',
@@ -40,12 +40,16 @@ export class SearchPageComponent implements OnInit {
     this.getStackOverflowData()
     const searchQuery = {query: this.form.value.searchPhrase}
     localStorage.setItem('searchQuery', JSON.stringify(searchQuery))
+    this.store.dispatch(addSearchQuery({payload: searchQuery.query}))
   }
 
   getStackOverflowData() {
     this.data.getStackOverflowData(this.form.value.searchPhrase)
       .subscribe(item => {
         this.resultObject = item
+        if (this.resultObject) {
+          this.store.dispatch(isSuccessSearch({payload: this.resultObject.has_more}))
+        }
         localStorage.setItem('searchData', JSON.stringify(this.resultObject.items))
         this.store.dispatch(apiData({payload: this.resultObject.items}))
       })

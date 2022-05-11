@@ -46,6 +46,9 @@ export class OpenModalsService {
         this.questionUrl = this.resultQuestionData.items[0].link.slice(36)
         this.store.dispatch(addQuestionData({questionData: this.resultQuestionData.items}))
         this.router.navigateByUrl(`question/${this.questionUrl}`)
+
+
+        localStorage.setItem('questionData', JSON.stringify(this.resultQuestionData.items)) // Добавил
       })
   }
 

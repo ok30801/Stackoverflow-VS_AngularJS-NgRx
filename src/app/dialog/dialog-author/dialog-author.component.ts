@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { OpenModalsService } from '../../shared/services/open-modals.service';
 import { AuthorDataSelector } from '../../store/selectors/selectors';
-import {SortingService} from '../../shared/services/sorting.service';
+import { SortingService } from '../../shared/services/sorting.service';
+import { clearDataDialogAuthor } from '../../store/actions/actions';
 
 @Component({
   selector: 'app-dialog-component',
@@ -14,6 +15,7 @@ export class DialogAuthorComponent implements OnInit {
   public authorData$ = this.store.select(AuthorDataSelector)
 
   authorName: any
+  avatar: any
   isSortingTheme = false
   isSortingAnswers = false
   isSortingTags = false
@@ -22,8 +24,11 @@ export class DialogAuthorComponent implements OnInit {
 
   ngOnInit(): void{
     this.authorName = this.store.select(AuthorDataSelector)
-      .subscribe(item => {
-        item ? this.authorName = item[0].owner.display_name : ''
+      .subscribe(data => {
+        if (data) {
+          this.authorName = data[0].owner.display_name
+          this.avatar = data[0].owner.profile_image
+        }
       })
   }
 
@@ -46,5 +51,8 @@ export class DialogAuthorComponent implements OnInit {
   sortingTags() {
     this.isSortingTags = !this.isSortingTags
     this.sorting.sortingTagsModal(this.isSortingTags)
+  }
+  close() {
+    this.store.dispatch(clearDataDialogAuthor())
   }
 }

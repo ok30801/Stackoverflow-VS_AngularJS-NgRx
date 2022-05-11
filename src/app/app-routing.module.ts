@@ -8,6 +8,7 @@ import { ResultPageComponent } from './components/result-page/result-page.compon
 import { MainLayoutComponent } from './shared/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { ThemePageComponent } from "./components/theme-page/theme-page.component";
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
 
@@ -24,6 +25,9 @@ const routes: Routes = [
       { path: 'question/:id/:link', component: ThemePageComponent, data: {depth: 3} },
     ]
   },
+  {
+    path: '**', component: NotFoundPageComponent
+  }
 ];
 
 @NgModule({
