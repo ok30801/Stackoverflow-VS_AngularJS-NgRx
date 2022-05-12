@@ -246,5 +246,4 @@ export class SortingService {
     })
     this.store.dispatch(addTagData({tagData: this.sortingData, tagName: 'Test'}))
   }
-
 }
