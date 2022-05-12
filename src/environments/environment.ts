@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  defaultToken: { token: '3MXW4BhcQnXumqT9z9sgNJaZHpD2' },
+  defaultToken: '3MXW4BhcQnXumqT9z9sgNJaZHpD2',
   site: 'stackoverflow',
   usersDbUrl: 'http://localhost:3000/users',
   getSearchData: 'https://api.stackexchange.com/2.3/search/advanced?q=',

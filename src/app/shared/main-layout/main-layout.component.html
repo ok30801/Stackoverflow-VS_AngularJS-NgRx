@@ -5,12 +5,9 @@
         <img src="../../assets/logo.png" alt="logo">
       </div>
       <div class="header__menu">
-        <div
-          routerLinkActive="active"
-          class="header__menu-link"
-          routerLink="/auth"
-          (click)="logout()"
-        >Logout
+        <div routerLinkActive="active" class="header__menu-link" routerLink="/auth" (click)="logout()">
+          <div class="header__char">{{firstCharUserEmail}}</div>
+          <mat-icon class="header__logout-icon" matSuffix>logout</mat-icon>
         </div>
       </div>
     </div>

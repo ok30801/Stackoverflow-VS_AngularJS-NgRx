@@ -52,12 +52,15 @@ export class AuthPageComponent implements OnInit {
   fetchUsers() {
     this.usersService.fetchUsers()
       .subscribe(data => {
-
         data.forEach(user => {
           if (user.email !== this.form.value.email || user.password !== this.form.value.password) {
             this.formError = true
           } else {
-            localStorage.setItem('userData', JSON.stringify(environment.defaultToken))
+            const userData = {
+              token: environment.defaultToken,
+              userEmail: this.form.value.email
+            }
+            localStorage.setItem('userData', JSON.stringify(userData))
             this.router.navigate(['/search'])
           }
         })

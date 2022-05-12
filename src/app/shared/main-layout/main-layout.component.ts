@@ -15,7 +15,12 @@ export class MainLayoutComponent implements OnInit {
 
   constructor(public store: Store) { }
 
-  ngOnInit(): void { }
+  public firstCharUserEmail = ''
+
+  ngOnInit(): void {
+    const userEmail = JSON.parse(localStorage.getItem('userData') || '{}')
+    this.firstCharUserEmail = userEmail.userEmail.slice(0,1)
+  }
 
   getDepth(outlet: any) {
     return outlet.activatedRouteData['depth'];

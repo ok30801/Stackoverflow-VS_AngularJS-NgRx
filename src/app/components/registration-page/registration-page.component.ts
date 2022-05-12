@@ -58,7 +58,11 @@ export class RegistrationPageComponent implements OnInit {
           this.formError = true
         } else {
           this.addUser()
-          localStorage.setItem('userData', JSON.stringify(environment.defaultToken))
+          const userData = {
+            token: environment.defaultToken,
+            userEmail: this.form.value.email
+          }
+          localStorage.setItem('userData', JSON.stringify(userData))
           this.router.navigate(['/search'])
         }
       })
